@@ -12,3 +12,5 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 - [Intellij Idea](https://www.jetbrains.com/idea/)
 
 - [Git](https://git-scm.com/)
+
+- [Postman](https://www.postman.com/downloads/)
