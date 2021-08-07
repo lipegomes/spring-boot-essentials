@@ -40,10 +40,18 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 
 - [Fedora](https://getfedora.org/)
 
-## Tools used:
+## Programs used:
 
 - [Intellij Idea](https://www.jetbrains.com/idea/)
-
-- [Git](https://git-scm.com/)
+- 
+- [MySQL Workbench](https://www.mysql.com/products/workbench/)
+- 
+- [Dbeaver](https://dbeaver.io/)
 
 - [Postman](https://www.postman.com/downloads/)
+
+## Tools used:
+
+- [Git](https://git-scm.com/)
+- 
+- [Docker](https://www.docker.com/)
