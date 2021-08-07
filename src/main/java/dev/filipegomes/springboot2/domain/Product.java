@@ -5,8 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Country {
-    // database world population: https://worldpopulationreview.com/countries
-    private Integer id;
+public class Product {
+    private Long id;
     private String name;
 }
