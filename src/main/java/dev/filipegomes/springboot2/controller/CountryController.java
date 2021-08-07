@@ -21,7 +21,14 @@ public class CountryController {
     @GetMapping(path = "list")
     //localhost:8080/country/list
     public List<Country> list(){
-         log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
+        log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
         return List.of(new Country("Brazil"), new Country("Nigeria") , new Country("India"));
+    }
+
+    //
+    @GetMapping(path = "list2")
+    public List<Country> list2(){
+        log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
+        return List.of(new Country("Armenia"), new Country("Denmark"), new Country("Thailand"));
     }
 }
