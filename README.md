@@ -5,7 +5,7 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 
 ## HTTP Verbs:
 
-![](https://github.com/lipegomes/spring-boot2-essentials/blob/main/assets/img/crud-grid.png)
+![](https://github.com/lipegomes/spring-boot2-essentials/blob/main/assets/img/crud-grid.jpeg)
 
 [Source](https://miro.medium.com/max/1400/1*O4Y4wXZGBH1ts4x1Ks2_YQ.jpeg)
 
