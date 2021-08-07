@@ -41,4 +41,9 @@ public class ProductService {
     public void delete(long id) {
         products.remove(findById(id));
     }
+
+    public void replace(Product product) {
+        delete(product.getId());
+        products.add(product);
+    }
 }
