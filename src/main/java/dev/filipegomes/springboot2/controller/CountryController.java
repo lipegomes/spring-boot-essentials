@@ -1,6 +1,7 @@
 package dev.filipegomes.springboot2.controller;
 
 import dev.filipegomes.springboot2.domain.Country;
+import dev.filipegomes.springboot2.service.CountryService;
 import dev.filipegomes.springboot2.util.DateUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,11 +17,12 @@ import java.util.List;
 @Log4j2
 @RequiredArgsConstructor
 public class CountryController {
-        private final DateUtil dateUtil;
+    private final DateUtil dateUtil;
+    private final CountryService countryService;
 
-    @GetMapping(path = "list")
+    @GetMapping
     public List<Country> list() {
         log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
-        return List.of(new Country("Brazil"), new Country("Nigeria"), new Country("India"));
+        return countryService.listAll();
     }
 }
