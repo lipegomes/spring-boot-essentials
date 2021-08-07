@@ -37,4 +37,8 @@ public class ProductService {
         products.add(product);
         return product;
     }
+
+    public void delete(long id) {
+        products.remove(findById(id));
+    }
 }
