@@ -34,6 +34,8 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 
 - [Construindo uma API RESTful com Java e Spring Framework — Parte 1](https://mari-azevedo.medium.com/construindo-uma-api-restful-com-java-e-spring-framework-46b74371d107)
 
+- [RFC7231](https://datatracker.ietf.org/doc/html/rfc7231)
+
 ## Operational System:
 
 - [Fedora](https://getfedora.org/)
