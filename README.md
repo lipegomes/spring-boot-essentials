@@ -43,9 +43,9 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 ## Programs used:
 
 - [Intellij Idea](https://www.jetbrains.com/idea/)
-- 
+
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
-- 
+
 - [Dbeaver](https://dbeaver.io/)
 
 - [Postman](https://www.postman.com/downloads/)
@@ -53,5 +53,5 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 ## Tools used:
 
 - [Git](https://git-scm.com/)
-- 
+
 - [Docker](https://www.docker.com/)
