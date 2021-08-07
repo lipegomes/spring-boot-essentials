@@ -4,12 +4,6 @@ Esse repositório é para eu datar meus estudos sobre o framework [Spring Boot](
 durante o curso [Spring Boot 2 Essentials](https://www.youtube.com/watch?v=bCzsSXE4Jzg&list=PL62G310vn6nFBIxp6ZwGnm8xMcGE3VA5H)
 do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 
-## HTTP Verbs:
-
-![](https://github.com/lipegomes/spring-boot2-essentials/blob/main/assets/img/crud-grid.jpeg)
-
-[Source](https://miro.medium.com/max/1400/1*O4Y4wXZGBH1ts4x1Ks2_YQ.jpeg)
-
 ## HTTP status code:
 
 ![](https://github.com/lipegomes/spring-boot2-essentials/blob/main/assets/img/status-code.png)
@@ -39,6 +33,10 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 ## Operational System:
 
 - [Fedora](https://getfedora.org/)
+
+## DataBase in Docker:
+
+[MySQL](https://hub.docker.com/_/mysql)
 
 ## Programs used:
 
