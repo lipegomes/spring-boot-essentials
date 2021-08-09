@@ -34,6 +34,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.findByIdOrThrowBadRequestException(id));
     }
 
+    @GetMapping(path = "/find")
+    public ResponseEntity<List<Product>> findByName(@RequestParam String name)
+    {
+        return ResponseEntity.ok(productService.findByName(name));
+    }
+
     @PostMapping
     public ResponseEntity<Product> save(@RequestBody ProductPostRequestBody productPostRequestBody) {
         return new ResponseEntity<>(productService.save(productPostRequestBody), HttpStatus.CREATED);
