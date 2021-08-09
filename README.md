@@ -34,9 +34,15 @@ do [DevDojo](https://www.youtube.com/channel/UCjF0OccBT05WxsJb2zNkL4g).
 
 - [Fedora](https://getfedora.org/)
 
+## Frameworks:
+
+- [Spring Boot](https://spring.io/projects/spring-boot)
+
+- [MapStruct](https://mapstruct.org/)
+
 ## DataBase in Docker:
 
-[MySQL](https://hub.docker.com/_/mysql)
+ - [MySQL](https://hub.docker.com/_/mysql)
 
 ## Programs used:
 

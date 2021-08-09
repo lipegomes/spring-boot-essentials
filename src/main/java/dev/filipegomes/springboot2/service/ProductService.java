@@ -1,6 +1,7 @@
 package dev.filipegomes.springboot2.service;
 
 import dev.filipegomes.springboot2.domain.Product;
+import dev.filipegomes.springboot2.mapper.ProductMapper;
 import dev.filipegomes.springboot2.repository.ProductRepository;
 import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
 import dev.filipegomes.springboot2.requests.ProductPutRequestBody;
@@ -26,11 +27,7 @@ public class ProductService {
     }
 
     public Product save(ProductPostRequestBody productPostRequestBody) {
-        Product product = Product
-                .builder()
-                .name(productPostRequestBody.getName())
-                .build();
-        return productRepository.save(product);
+        return productRepository.save(ProductMapper.INSTANCE.toProduct(productPostRequestBody));
     }
 
     public void delete(long id) {
@@ -39,11 +36,8 @@ public class ProductService {
 
     public void replace(ProductPutRequestBody productPutRequestBody) {
         Product savedProduct = findByIdOrThrowBadRequestException(productPutRequestBody.getId());
-        Product product = Product.builder()
-                .id(savedProduct.getId())
-                .name(productPutRequestBody.getName())
-                .build();
-
+        Product product = ProductMapper.INSTANCE.toProduct(productPutRequestBody);
+        product.setId(savedProduct.getId());
         productRepository.save(product);
     }
 }
