@@ -1,49 +1,49 @@
 package dev.filipegomes.springboot2.service;
 
 import dev.filipegomes.springboot2.domain.Product;
+import dev.filipegomes.springboot2.repository.ProductRepository;
+import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
+import dev.filipegomes.springboot2.requests.ProductPutRequestBody;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    private static List<Product> products;
+    private final ProductRepository productRepository;
 
-    static {
-        products = new ArrayList<>(List.of(
-                new Product(1L, "Calça Jeans"),
-                new Product(2L, "Monitor UHD 4K 27 Polegadas"),
-                new Product(3L, "Teclado Mecânico com Led")
-        ));
-    }
     public List<Product> listAll() {
-        return products;
+        return productRepository.findAll();
     }
 
-    public Product findById(long id) {
-        return products
-                .stream()
-                .filter(country -> country.getId().equals(id))
-                .findFirst()
+    public Product findByIdOrThrowBadRequestException(long id) {
+        return productRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product not Found"));
     }
 
-    public Product save(Product product) {
-        product.setId(ThreadLocalRandom.current().nextLong(1, 1_000));
-        products.add(product);
-        return product;
+    public Product save(ProductPostRequestBody productPostRequestBody) {
+        Product product = Product
+                .builder()
+                .name(productPostRequestBody.getName())
+                .build();
+        return productRepository.save(product);
     }
 
     public void delete(long id) {
-        products.remove(findById(id));
+        productRepository.delete(findByIdOrThrowBadRequestException(id));
     }
 
-    public void replace(Product product) {
-        delete(product.getId());
-        products.add(product);
+    public void replace(ProductPutRequestBody productPutRequestBody) {
+        Product savedProduct = findByIdOrThrowBadRequestException(productPutRequestBody.getId());
+        Product product = Product.builder()
+                .id(savedProduct.getId())
+                .name(productPutRequestBody.getName())
+                .build();
+
+        productRepository.save(product);
     }
 }

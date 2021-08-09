@@ -1,6 +1,8 @@
 package dev.filipegomes.springboot2.controller;
 
 import dev.filipegomes.springboot2.domain.Product;
+import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
+import dev.filipegomes.springboot2.requests.ProductPutRequestBody;
 import dev.filipegomes.springboot2.service.ProductService;
 import dev.filipegomes.springboot2.util.DateUtil;
 import lombok.RequiredArgsConstructor;
@@ -29,12 +31,12 @@ public class ProductController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Product> findById(@PathVariable long id)
     {
-        return ResponseEntity.ok(productService.findById(id));
+        return ResponseEntity.ok(productService.findByIdOrThrowBadRequestException(id));
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@RequestBody Product product) {
-        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
+    public ResponseEntity<Product> save(@RequestBody ProductPostRequestBody productPostRequestBody) {
+        return new ResponseEntity<>(productService.save(productPostRequestBody), HttpStatus.CREATED);
     }
 
     @DeleteMapping(path = "/{id}")
@@ -44,8 +46,8 @@ public class ProductController {
     }
 
     @PutMapping
-    public ResponseEntity<Product> replace(@RequestBody Product product) {
-        productService.replace(product);
+    public ResponseEntity<Product> replace(@RequestBody ProductPutRequestBody productPutRequestBody) {
+        productService.replace(productPutRequestBody);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
