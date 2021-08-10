@@ -7,6 +7,8 @@ import dev.filipegomes.springboot2.repository.ProductRepository;
 import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
 import dev.filipegomes.springboot2.requests.ProductPutRequestBody;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +19,8 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> listAll() {
-        return productRepository.findAll();
+    public Page<Product> listAll(Pageable pageable) {
+        return productRepository.findAll(pageable);
     }
 
     public List<Product> findByName(String name) {
