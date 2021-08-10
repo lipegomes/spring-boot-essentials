@@ -23,6 +23,10 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
+    public List<Product> listAllNonPageable() {
+        return productRepository.findAll();
+    }
+
     public List<Product> findByName(String name) {
         return productRepository.findByName(name);
     }

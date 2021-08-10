@@ -31,6 +31,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.listAll(pageable));
     }
 
+    @GetMapping(path = "/all")
+    public ResponseEntity<List<Product>> listAll() {
+        log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
+        return ResponseEntity.ok(productService.listAllNonPageable());
+    }
+
     @GetMapping(path = "/{id}")
     public ResponseEntity<Product> findById(@PathVariable long id)
     {
