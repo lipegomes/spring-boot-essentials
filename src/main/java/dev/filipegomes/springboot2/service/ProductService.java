@@ -1,6 +1,7 @@
 package dev.filipegomes.springboot2.service;
 
 import dev.filipegomes.springboot2.domain.Product;
+import dev.filipegomes.springboot2.exception.BadRequestException;
 import dev.filipegomes.springboot2.mapper.ProductMapper;
 import dev.filipegomes.springboot2.repository.ProductRepository;
 import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
@@ -27,7 +28,7 @@ public class ProductService {
 
     public Product findByIdOrThrowBadRequestException(long id) {
         return productRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Product not Found"));
+                .orElseThrow(() -> new BadRequestException("Product not Found"));
     }
 
     public Product save(ProductPostRequestBody productPostRequestBody) {
