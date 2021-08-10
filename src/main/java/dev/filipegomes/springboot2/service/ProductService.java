@@ -7,9 +7,8 @@ import dev.filipegomes.springboot2.repository.ProductRepository;
 import dev.filipegomes.springboot2.requests.ProductPostRequestBody;
 import dev.filipegomes.springboot2.requests.ProductPutRequestBody;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,6 +30,7 @@ public class ProductService {
                 .orElseThrow(() -> new BadRequestException("Product not Found"));
     }
 
+    @Transactional
     public Product save(ProductPostRequestBody productPostRequestBody) {
         return productRepository.save(ProductMapper.INSTANCE.toProduct(productPostRequestBody));
     }
