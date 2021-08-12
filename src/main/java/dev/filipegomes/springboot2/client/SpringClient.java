@@ -39,6 +39,24 @@ public class SpringClient {
                 Product.class);
 
         log.info("saved product {} ", bikeSaved);
+
+        Product productUpdated = bikeSaved.getBody();
+        productUpdated.setName("Moitão Roldana Para Elevação De Carga 300kg");
+
+        ResponseEntity<Void> moitaoUpdated = new RestTemplate().exchange("http://localhost:8080/products/",
+                HttpMethod.PUT,
+                new HttpEntity<>(productUpdated, createJsonHeader()),
+                Void.class);
+
+        log.info(moitaoUpdated);
+
+        ResponseEntity<Void> moitaoDeleted = new RestTemplate().exchange("http://localhost:8080/products/{id}",
+                HttpMethod.DELETE,
+                null,
+                Void.class,
+                productUpdated.getId());
+
+        log.info(moitaoDeleted);
     }
 
     private static HttpHeaders createJsonHeader() {
