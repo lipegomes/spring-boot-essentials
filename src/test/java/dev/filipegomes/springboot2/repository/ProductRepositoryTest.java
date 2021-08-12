@@ -1,6 +1,7 @@
 package dev.filipegomes.springboot2.repository;
 
 import dev.filipegomes.springboot2.domain.Product;
+import dev.filipegomes.springboot2.util.ProductCreator;
 import lombok.extern.log4j.Log4j2;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -22,7 +23,7 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("Saves creates anime when Successful")
     void save_PersistProduct_WhenSuccessful() {
-        Product productToBeSaved = createProduct();
+        Product productToBeSaved = ProductCreator.createProductToBeSaved();
 
         Product productSaved = this.productRepository.save(productToBeSaved);
 
@@ -34,7 +35,7 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("Saves updates product when Successful")
     void save_UpdatesProduct_WhenSuccessful() {
-        Product productToBeSaved = createProduct();
+        Product productToBeSaved = ProductCreator.createProductToBeSaved();
 
         Product productSaved = this.productRepository.save(productToBeSaved);
 
@@ -52,7 +53,7 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("Delete removes product when Successful")
     void delete_RemovesProduct_WhenSuccessful() {
-        Product productToBeSaved = createProduct();
+        Product productToBeSaved = ProductCreator.createProductToBeSaved();
 
         Product productSaved = this.productRepository.save(productToBeSaved);
 
@@ -66,7 +67,7 @@ class ProductRepositoryTest {
     @Test
     @DisplayName("Find by Name returns list of removes product when Successful")
     void findByName_ReturnsListOfProduct_WhenSuccessful() {
-        Product productToBeSaved = createProduct();
+        Product productToBeSaved = ProductCreator.createProductToBeSaved();
 
         Product productSaved = this.productRepository.save(productToBeSaved);
 
@@ -93,17 +94,11 @@ class ProductRepositoryTest {
     @DisplayName("Save throw ConstraintViolationException when name is empty")
     void save_ThrowsConstraintViolationException_WhenNameIsEmpty() {
         Product product = new Product();
-//         Assertions.assertThatThrownBy(() -> this.productRepository.save(product))
-//         .isInstanceOf(ConstraintViolationException.class);
+         Assertions.assertThatThrownBy(() -> this.productRepository.save(product))
+         .isInstanceOf(ConstraintViolationException.class);
 
-        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
-                .isThrownBy(() -> this.productRepository.save(product))
-                .withMessageContaining("The product name cannot be empty");
-    }
-
-    private Product createProduct() {
-        return Product.builder()
-                .name("Carrinho De Controle Remoto Cr Gw126 2,4ghz 4wd")
-                .build();
+//        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
+//                .isThrownBy(() -> this.productRepository.save(product))
+//                .withMessageContaining("The product name cannot be empty");
     }
 }

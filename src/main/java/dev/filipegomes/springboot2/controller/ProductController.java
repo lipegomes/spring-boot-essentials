@@ -27,13 +27,11 @@ public class ProductController {
 
     @GetMapping
     public ResponseEntity<Page<Product>> list(Pageable pageable) {
-        log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
         return ResponseEntity.ok(productService.listAll(pageable));
     }
 
     @GetMapping(path = "/all")
     public ResponseEntity<List<Product>> listAll() {
-        log.info(dateUtil.formatLocalDateTimeToDataBasStyle(LocalDateTime.now()));
         return ResponseEntity.ok(productService.listAllNonPageable());
     }
 
