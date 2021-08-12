@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,15 +76,29 @@ class ProductRepositoryTest {
 
         Assertions.assertThat(products).isNotEmpty();
 
-        Assertions.assertThat(products).contains(productSaved);
+        Assertions.assertThat(products)
+                .contains(productSaved)
+                .contains(productSaved);
     }
 
     @Test
     @DisplayName("Find by Name returns empty list when no product is not found")
     void findByName_ReturnsEmptyList_WhenProductIsNotFound() {
-        List<Product> products = this.productRepository.findByName("Porsche");
+        List<Product> products = this.productRepository.findByName("");
 
         Assertions.assertThat(products).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Save throw ConstraintViolationException when name is empty")
+    void save_ThrowsConstraintViolationException_WhenNameIsEmpty() {
+        Product product = new Product();
+//         Assertions.assertThatThrownBy(() -> this.productRepository.save(product))
+//         .isInstanceOf(ConstraintViolationException.class);
+
+        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
+                .isThrownBy(() -> this.productRepository.save(product))
+                .withMessageContaining("The product name cannot be empty");
     }
 
     private Product createProduct() {
