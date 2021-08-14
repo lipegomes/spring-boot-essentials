@@ -94,11 +94,11 @@ class ProductRepositoryTest {
     @DisplayName("Save throw ConstraintViolationException when name is empty")
     void save_ThrowsConstraintViolationException_WhenNameIsEmpty() {
         Product product = new Product();
-         Assertions.assertThatThrownBy(() -> this.productRepository.save(product))
-         .isInstanceOf(ConstraintViolationException.class);
+         // Assertions.assertThatThrownBy(() -> this.productRepository.save(product))
+         // .isInstanceOf(ConstraintViolationException.class);
 
-//        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
-//                .isThrownBy(() -> this.productRepository.save(product))
-//                .withMessageContaining("The product name cannot be empty");
+        Assertions.assertThatExceptionOfType(ConstraintViolationException.class)
+                .isThrownBy(() -> this.productRepository.save(product))
+                .withMessageContaining("The product name cannot be empty");
     }
 }
